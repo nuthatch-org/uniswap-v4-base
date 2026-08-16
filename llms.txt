@@ -1,0 +1,30 @@
+# nuthatch nest on base
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `pool_manager` = 0x498581ff718922c3f8e6a244956af099b2652b2b
+- `position_manager` = 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+- `arrakis_hook_factory` = 0xef129a430032c8183aba158c1a70799e3b840df9
+
+## Tables (one per contract event)
+- `arrakis_hook_factory__log_create_private_hook` - LogCreatePrivateHook(address,address,bytes32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, hook, module, salt)
+- `pool_manager__initialize` - Initialize(bytes32,address,address,uint24,int24,address,uint160,int24) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, id, currency0, currency1, fee, tickSpacing, hooks, sqrtPriceX96, tick)
+- `pool_manager__modify_liquidity` - ModifyLiquidity(bytes32,address,int24,int24,int256,bytes32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, id, sender, tickLower, tickUpper, liquidityDelta, salt)
+- `pool_manager__swap` - Swap(bytes32,address,int128,int128,uint160,uint128,int24,uint24) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, id, sender, amount0, amount1, sqrtPriceX96, liquidity, tick, fee)
+- `position_manager__subscription` - Subscription(uint256,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenId, subscriber)
+- `position_manager__transfer` - Transfer(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, id)
+- `position_manager__unsubscription` - Unsubscription(uint256,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, tokenId, subscriber)
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`
+- `GET /balances?limit=N`    top holder balances (when an ERC-20 Transfer table is present)
+- `GET /balance/{address}`   one address's derived balance
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, entity,
+balance, top_balances. Fully offline against the local instance; nothing phones home.

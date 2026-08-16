@@ -1,0 +1,38 @@
+[nest]
+name = "uniswap-v4-base"
+chain = "base"
+chain_id = 8453
+# Do not commit provider endpoints or credentials. Pass an authenticated archive endpoint with
+# `nuthatch dev --rpc "$RPC"`; runtime overrides are tried before this empty list.
+rpc_urls = []
+schema_version = 1
+block_timestamps = true
+
+[[contracts]]
+alias = "pool_manager"
+address = "0x498581ff718922c3f8e6a244956af099b2652b2b"
+start_block = 25350988
+abi = "abis/pool_manager.json"
+events = [
+    "Initialize",
+    "ModifyLiquidity",
+    "Swap",
+]
+
+[[contracts]]
+alias = "position_manager"
+address = "0x7c5f5a4bbd8fd63184577525326123b519429bdc"
+start_block = 25350993
+abi = "abis/position_manager.json"
+events = [
+    "Subscription",
+    "Unsubscription",
+    "Transfer",
+]
+
+[[contracts]]
+alias = "arrakis_hook_factory"
+address = "0xef129a430032c8183aba158c1a70799e3b840df9"
+start_block = 28450225
+abi = "abis/arrakis_hook_factory.json"
+events = ["LogCreatePrivateHook"]
