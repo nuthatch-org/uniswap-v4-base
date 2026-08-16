@@ -1,6 +1,6 @@
 # Uniswap V4 Base nest
 
-A [Nuthatch](https://github.com/nightswatchhq/nuthatch) indexer for the Uniswap V4 Base deployment
+A [Nuthatch](https://github.com/nightswatchhq/nuthatch) nest for the Uniswap V4 Base deployment
 used by Graph deployment `Qmbsc6XQWbiv4DfLVfaNciScqYLyDWUYjWzrFBbzzmRsMB`.
 
 It is a standalone Base nest, not a replacement for
