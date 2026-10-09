@@ -1,18 +1,18 @@
 # Uniswap V4 Base nest
 
-A [Nuthatch](https://github.com/nightswatchhq/nuthatch) nest for the Uniswap V4 Base deployment
+A [Nuthatch](https://github.com/nuthatch-org/nuthatch) nest for the Uniswap V4 Base deployment
 used by Graph deployment `Qmbsc6XQWbiv4DfLVfaNciScqYLyDWUYjWzrFBbzzmRsMB`.
 
 It is a standalone Base nest, not a replacement for
-[uniswap-v4-ethereum](https://github.com/nightswatchhq/uniswap-v4-ethereum). Nuthatch nests have
+[uniswap-v4-ethereum](https://github.com/nuthatch-org/uniswap-v4-ethereum). Nuthatch nests have
 one chain each, so the two can be mounted in the same multichain runtime without blending their
 cursors, data, or RPC credentials.
 
 ## Run it
 
 ```sh
-cargo install --git https://github.com/nightswatchhq/nuthatch nuthatch
-git clone https://github.com/nightswatchhq/uniswap-v4-base
+cargo install --git https://github.com/nuthatch-org/nuthatch nuthatch
+git clone https://github.com/nuthatch-org/uniswap-v4-base
 cd uniswap-v4-base
 
 # Keep your authenticated Base archive RPC outside the repository.
